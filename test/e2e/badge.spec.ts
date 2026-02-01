@@ -17,7 +17,10 @@ test.describe('badge API', () => {
     'license': 'license',
     'size': 'install size',
     'downloads': 'downloads/mo',
+    'downloads-day': 'downloads/day',
     'downloads-week': 'downloads/wk',
+    'downloads-month': 'downloads/mo',
+    'downloads-year': 'downloads/yr',
     'vulnerabilities': 'vulns',
     'dependencies': 'dependencies',
     'updated': 'updated',
@@ -26,7 +29,13 @@ test.describe('badge API', () => {
     'created': 'created',
     'maintainers': 'maintainers',
     'deprecated': 'status',
+    'quality': 'quality',
+    'popularity': 'popularity',
+    'maintenance': 'maintenance',
+    'score': 'score',
   }
+
+  const percentageTypes = new Set(['quality', 'popularity', 'maintenance', 'score'])
 
   for (const [type, expectedLabel] of Object.entries(badgeMap)) {
     test.describe(`${type} badge`, () => {
@@ -64,8 +73,34 @@ test.describe('badge API', () => {
         expect(body).toContain(packageName)
         expect(body).not.toContain(expectedLabel)
       })
+
+      if (percentageTypes.has(type)) {
+        test('contains percentage value', async ({ page, baseURL }) => {
+          const url = toLocalUrl(baseURL, `/api/registry/badge/${type}/vue`)
+          const { body } = await fetchBadge(page, url)
+
+          expect(body).toMatch(/\d+%|unknown/)
+        })
+      }
     })
   }
+
+  test.describe('specific scenarios', () => {
+    test('downloads-year handles large numbers', async ({ page, baseURL }) => {
+      const url = toLocalUrl(baseURL, '/api/registry/badge/downloads-year/lodash')
+      const { body } = await fetchBadge(page, url)
+
+      expect(body).toContain('downloads/yr')
+      expect(body).not.toContain('NaN')
+    })
+
+    test('deprecated badge shows active for non-deprecated packages', async ({ page, baseURL }) => {
+      const url = toLocalUrl(baseURL, '/api/registry/badge/deprecated/vue')
+      const { body } = await fetchBadge(page, url)
+
+      expect(body).toContain('active')
+    })
+  })
 
   test('custom color parameter is applied to SVG', async ({ page, baseURL }) => {
     const customColor = 'ff69b4'
