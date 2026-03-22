@@ -595,7 +595,8 @@
       "b": "{size} o",
       "kb": "{size} ko",
       "mb": "{size} Mo"
-    }
+    },
+    "download": {}
   },
   "connector": {
     "modal": {
@@ -872,11 +873,7 @@
       "downloads_month": "Téléch./mois",
       "downloads_year": "Téléch./an",
       "published": "Dern. publication",
-      "name": "Nom",
-      "quality": "Qualité",
-      "popularity": "Popularité",
-      "maintenance": "Maintenance",
-      "score": "Score"
+      "name": "Nom"
     },
     "columns": {
       "title": "Colonnes",
@@ -1166,6 +1163,7 @@
     "file_size_warning": "{size} dépasse la limite de 250 Ko pour la comparaison",
     "compare_versions": "diff",
     "compare_versions_title": "Comparer avec la dernière version",
+    "version_invalid_url_format": {},
     "summary": "Résumé",
     "deps_count": "{count} dépendances",
     "dependencies": "Dépendances",
@@ -1330,5 +1328,9 @@
       "p1": "Si vous rencontrez un problème d'accessibilité sur {app}, veuillez nous le faire savoir en ouvrant une issue sur notre {link}. Nous prenons ces rapports au sérieux et ferons de notre mieux pour les régler.",
       "link": "dépôt GitHub"
     }
-  }
+  },
+  "translation_status": {
+    "table": {}
+  },
+  "action_bar": {}
 }

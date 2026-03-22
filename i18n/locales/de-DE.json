@@ -574,7 +574,8 @@
       "b": "{size} B",
       "kb": "{size} kB",
       "mb": "{size} MB"
-    }
+    },
+    "download": {}
   },
   "connector": {
     "modal": {
@@ -851,11 +852,7 @@
       "downloads_month": "Downloads/Monat",
       "downloads_year": "Downloads/Jahr",
       "published": "Zuletzt veröffentlicht",
-      "name": "Name",
-      "quality": "Qualität",
-      "popularity": "Beliebtheit",
-      "maintenance": "Wartung",
-      "score": "Bewertung"
+      "name": "Name"
     },
     "columns": {
       "title": "Spalten",
@@ -1145,6 +1142,7 @@
     "file_size_warning": "{size} überschreitet das Limit für die Diff-Anzeige",
     "compare_versions": "Diff",
     "compare_versions_title": "Mit neuester Version vergleichen",
+    "version_invalid_url_format": {},
     "summary": "Zusammenfassung",
     "deps_count": "{count} Abh.",
     "dependencies": "Abhängigkeiten",
@@ -1309,5 +1307,9 @@
       "p1": "Wenn du bei {app} auf eine Barriere stößt, sag uns bitte Bescheid, indem du ein Ticket in unserem {link} eröffnest. Wir nehmen diese Meldungen ernst und werden unser Bestes tun, um sie zu beheben.",
       "link": "GitHub-Repository"
     }
-  }
+  },
+  "translation_status": {
+    "table": {}
+  },
+  "action_bar": {}
 }
