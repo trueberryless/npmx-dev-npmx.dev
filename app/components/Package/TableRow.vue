@@ -14,18 +14,12 @@ const emit = defineEmits<{
 }>()
 
 const pkg = computed(() => props.result.package)
-const score = computed(() => props.result.score)
 
 const updatedDate = computed(() => props.result.package.date)
 const { isPackageSelected, togglePackageSelection, canSelectMore } = usePackageSelection()
 const isSelected = computed<boolean>(() => {
   return isPackageSelected(props.result.package.name)
 })
-
-function formatScore(value?: number): string {
-  if (value === undefined || value === 0) return '-'
-  return Math.round(value * 100).toString()
-}
 
 function isColumnVisible(id: string): boolean {
   return props.columns.find(c => c.id === id)?.visible ?? false
