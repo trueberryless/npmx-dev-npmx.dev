@@ -5,10 +5,15 @@ const props = defineProps<{
   diff: InstallSizeDiff
 }>()
 
+const { locale } = useI18n()
+
 const bytesFormatter = useBytesFormatter()
 const numberFormatter = useNumberFormatter()
 
-const sizePercent = computed(() => Math.round(props.diff.sizeRatio * 100))
+const sizePercent = computed(() => {
+  const percentFormatter = new Intl.NumberFormat(locale.value, { style: 'percent' })
+  return percentFormatter.format(props.diff.sizeRatio)
+})
 </script>
 
 <template>
@@ -28,7 +33,7 @@ const sizePercent = computed(() => Math.round(props.diff.sizeRatio * 100))
     <p class="text-sm m-0 mt-1">
       <i18n-t v-if="diff.sizeThresholdExceeded" keypath="package.size_increase.size" scope="global">
         <template #percent
-          ><strong>{{ sizePercent }}%</strong></template
+          ><strong>{{ sizePercent }}</strong></template
         >
         <template #size
           ><strong>{{ bytesFormatter.format(diff.sizeIncrease) }}</strong></template
