@@ -9,7 +9,7 @@ const bytesFormatter = useBytesFormatter()
 const numberFormatter = useNumberFormatter()
 const percentFormatter = useNumberFormatter({ style: 'percent' })
 
-const sizePercent = computed(() => percentFormatter.value.format(props.diff.sizeRatio))
+const sizePercent = computed(() => percentFormatter.value.format(Math.abs(props.diff.sizeRatio)))
 const sizeDecreaseAbs = computed(() => Math.abs(props.diff.sizeIncrease))
 const depDecreaseAbs = computed(() => Math.abs(props.diff.depDiff))
 </script>
